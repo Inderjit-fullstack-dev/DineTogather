@@ -1,6 +1,6 @@
-﻿namespace DineTogather.Contracts.Authentication
+﻿namespace DineTogather.Application.Dtos
 {
-    public record AuthResponse
+    public record AuthDto
     (
         long UserId,
         string FirstName,

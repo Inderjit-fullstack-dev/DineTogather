@@ -1,4 +1,4 @@
-﻿namespace DineTogather.Contracts.Authentication
+﻿namespace DineTogather.Application.Requests.Authentication
 {
     public record RegisterRequest
     (

@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DineTogather.API", "DineTogather.API\DineTogather.API.csproj", "{96A1BC54-27C3-46E3-A898-2C88913D55C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DineTogather.API", "DineTogather.API\DineTogather.API.csproj", "{96A1BC54-27C3-46E3-A898-2C88913D55C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DineTogather.Infrastructure", "DineTogather.Infrastructure\DineTogather.Infrastructure.csproj", "{DD31C285-F9F1-4C96-BF7A-589E538B8786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DineTogather.Infrastructure", "DineTogather.Infrastructure\DineTogather.Infrastructure.csproj", "{DD31C285-F9F1-4C96-BF7A-589E538B8786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DineTogather.Application", "DineTogather.Application\DineTogather.Application.csproj", "{D5DF5351-DE1B-4B1E-AD81-55C69ACDB44B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DineTogather.Application", "DineTogather.Application\DineTogather.Application.csproj", "{D5DF5351-DE1B-4B1E-AD81-55C69ACDB44B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DineTogather.Domain", "DineTogather.Domain\DineTogather.Domain.csproj", "{4A719C55-E1B5-41D1-ACF7-6E70CA2C93CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DineTogather.Contracts", "DineTogather.Contracts\DineTogather.Contracts.csproj", "{CA9CF4B4-FACC-40F1-9644-C449CA63B678}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DineTogather.Domain", "DineTogather.Domain\DineTogather.Domain.csproj", "{4A719C55-E1B5-41D1-ACF7-6E70CA2C93CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{4A719C55-E1B5-41D1-ACF7-6E70CA2C93CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A719C55-E1B5-41D1-ACF7-6E70CA2C93CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A719C55-E1B5-41D1-ACF7-6E70CA2C93CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA9CF4B4-FACC-40F1-9644-C449CA63B678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA9CF4B4-FACC-40F1-9644-C449CA63B678}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA9CF4B4-FACC-40F1-9644-C449CA63B678}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA9CF4B4-FACC-40F1-9644-C449CA63B678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
