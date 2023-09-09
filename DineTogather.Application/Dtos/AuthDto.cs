@@ -1,11 +1,10 @@
-﻿namespace DineTogather.Application.Dtos
+﻿using DineTogather.Domain.Entities;
+
+namespace DineTogather.Application.Dtos
 {
     public record AuthDto
     (
-        long UserId,
-        string FirstName,
-        string LastName,
-        string Email,
-        string Token
+        User user,
+        string token
     );
 }

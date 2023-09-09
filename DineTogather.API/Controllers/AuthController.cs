@@ -16,8 +16,16 @@ namespace DineTogather.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Signup(RegisterRequest request)
         {
-            var response = await _authenticationService.Register(request);
-            return Ok(response);
+            try
+            {
+                var response = await _authenticationService.Register(request);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
 

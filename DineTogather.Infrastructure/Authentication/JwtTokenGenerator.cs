@@ -1,4 +1,6 @@
 ﻿using DineTogather.Application.Common.Interfaces;
+using DineTogather.Domain.Entities;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -8,24 +10,32 @@ namespace DineTogather.Infrastructure.Authentication
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
     {
-        public string GenerateJwtToken(long userId, string firstName, string lastName, string email)
+        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IOptions<JWTSettings> _jwtSettings;
+
+        public JwtTokenGenerator(IDateTimeProvider dateTimeProvider, IOptions<JWTSettings> jwtSettings)
+        {
+            _dateTimeProvider = dateTimeProvider;
+            _jwtSettings = jwtSettings;
+        }
+        public string GenerateJwtToken(User user)
         {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, firstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, lastName),
-                new Claim(JwtRegisteredClaimNames.Email, email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
             };
 
             var signingCredentials = new SigningCredentials
-                                    (new SymmetricSecurityKey(Encoding.UTF8.GetBytes("79pZ5MFFtUtkNwCOnFS6797EeeaVDVqq")),
+                                    (new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Value.Secret)),
                                             SecurityAlgorithms.HmacSha256);
 
             var securityToken = new JwtSecurityToken(
-                    issuer: "DineTogather",
+                    issuer: _jwtSettings.Value.Issuer,
                     claims: claims,
-                    expires: DateTime.Now.AddDays(1),
+                    expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.Value.ExpiryMinutes),
                     signingCredentials: signingCredentials
 
                 );

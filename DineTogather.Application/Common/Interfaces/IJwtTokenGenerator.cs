@@ -1,7 +1,9 @@
-﻿namespace DineTogather.Application.Common.Interfaces
+﻿using DineTogather.Domain.Entities;
+
+namespace DineTogather.Application.Common.Interfaces
 {
     public interface IJwtTokenGenerator
     {
-        string GenerateJwtToken(long userId, string firstName, string lastName, string email);
+        string GenerateJwtToken(User user);
     }
 }

@@ -1,3 +1,4 @@
+using DineTogather.API.Middlewares;
 using DineTogather.Application.Extensions;
 using DineTogather.Infrastructure;
 
@@ -9,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
         .AddApplicationServices()
-        .AddInfrastructureServices();
+        .AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -24,5 +25,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.Run();
