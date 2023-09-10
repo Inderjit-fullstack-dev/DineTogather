@@ -1,16 +1,18 @@
 ﻿using DineTogather.Application.Requests.Authentication;
-using DineTogather.Application.Services.Authentication;
+using DineTogather.Application.Services.Authentication.Login;
+using DineTogather.Application.Services.Authentication.Register;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DineTogather.API.Controllers
 {
     public class AuthController : BaseController
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly IMediator _mediator;
 
-        public AuthController(IAuthenticationService authenticationService)
+        public AuthController(IMediator mediator)
         {
-            _authenticationService = authenticationService;
+            _mediator = mediator;
         }
 
         [HttpPost]
@@ -18,7 +20,7 @@ namespace DineTogather.API.Controllers
         {
             try
             {
-                var response = await _authenticationService.Register(request);
+                var response = await _mediator.Send(new RegisterCommand(request));
                 return Ok(response);
             }
             catch (Exception ex)
@@ -32,9 +34,8 @@ namespace DineTogather.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginRequest request)
         {
-            var response = await _authenticationService.Login(request);
+            var response = await _mediator.Send(new LoginQuery(request));
             return Ok(response);
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using DineTogather.Application.Services.Authentication;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace DineTogather.Application.Extensions
 {
@@ -7,7 +6,7 @@ namespace DineTogather.Application.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddMediatR(o => o.RegisterServicesFromAssembly(typeof(ApplicationServices).Assembly));
             return services;
         }
     }
